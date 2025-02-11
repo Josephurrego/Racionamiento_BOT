@@ -108,6 +108,6 @@ function initializeTasks(){
         };
     });
 }
-
-// Start your client
-client.initialize();
+module.exports = {
+    client
+}
