@@ -1,7 +1,7 @@
 const http = require("http");
 const {client} = require('./wwebApp')
 
-const host = 'localhost';
+const host = '0.0.0.0';
 const port = 8000;
 
 const server = http.createServer((req,res)=>{
