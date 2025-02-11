@@ -4,9 +4,8 @@ const {client} = require('./wwebApp')
 const host = 'localhost';
 const port = 8000;
 
-
-
 const server = http.createServer((req,res)=>{
+    console.log('Entró');
     res.writeHead(200);
     res.end('Hola');
 });
