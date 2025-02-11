@@ -7,6 +7,7 @@ const PARAMS = {
 
 async function fetchData(){ // Obtener Datos de los turnos
     let res = await axios.get('https://services1.arcgis.com/J5ltM0ovtzXUbp7B/ArcGIS/rest/services/EsquemaRestriccion/FeatureServer/0/query',{params:PARAMS})
+    console.log(res.status);
     let data =  res.data.features.map((e)=>{
         return {
             name:e.attributes.TURNO,

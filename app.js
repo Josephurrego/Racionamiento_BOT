@@ -85,7 +85,7 @@ client.on('message',async (msg) => {
 function initializeTasks(){
     console.log('Initializing background tasks');
 
-    cron.schedule('35 16 * * *', async () => {
+    cron.schedule('40 19 * * *', async () => {
         const today = new Date();
         const todayTurno = data.filter((e)=>e.fechaInicio.getDate()===today.getDate() && e.fechaInicio.getMonth()===today.getMonth())[0].name.replace('Turno ','');
         const usersToRemind = Object.keys(usersData).filter((e)=>usersData[e].includes(`Turno ${Number(todayTurno)+1}`));
