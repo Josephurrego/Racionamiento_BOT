@@ -39,7 +39,7 @@ client.once('ready', async () => {
 
 // When the client received QR-Code
 client.on('qr', (qr) => {
-    console.log('https://api.qrserver.com/v1/create-qr-code/?data='+qr)
+    console.log(qr)
 });
 
 client.on('message',async (msg) => {
