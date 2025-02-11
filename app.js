@@ -1,5 +1,4 @@
 const { Client, LocalAuth} = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
 const {
     fetchData,
     getTurno,
@@ -40,7 +39,8 @@ client.once('ready', async () => {
 
 // When the client received QR-Code
 client.on('qr', (qr) => {
-    qrcode.generate(qr);
+    console.log(qr)
+    console.log('ese es');
 });
 
 client.on('message',async (msg) => {
