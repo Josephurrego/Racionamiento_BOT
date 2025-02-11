@@ -48,6 +48,7 @@ client.on('message',async (msg) => {
     activeUsers[msg.from] = Date.now();
 
     if (!isActive){
+        fetchData();
         await replyWelcomeMessage(chat,data);
         return;
     }
@@ -89,12 +90,17 @@ function initializeTasks(){
 
     cron.schedule('40 19 * * *', async () => {
         const today = new Date();
-        const todayTurno = data.filter((e)=>e.fechaInicio.getDate()===today.getDate() && e.fechaInicio.getMonth()===today.getMonth())[0].name.replace('Turno ','');
+        let todayTurno = data.filter((e)=>e.fechaInicio.getDate()===today.getDate() && e.fechaInicio.getMonth()===today.getMonth())
+        if (filterTurno.length===0){
+            todayTurno = '1';
+        }else {
+            todayTurno = todayTurno[0].name.replace('Turno ','');
+        }
         const usersToRemind = Object.keys(usersData).filter((e)=>usersData[e].includes(`Turno ${Number(todayTurno)+1}`));
         for (const i of usersToRemind){
             const chat = await client.getChatById(i);
-            await chat.sendMessage(`Veciiiiiiiiiiiii, mañana el turno ${Number(todayTurno)+1} no tiene agua😞`);
-            await chat.sendMessage('Recuerda bañarte y no solo hoy🚰.');
+            await chat.sendMessage(`Holaa. Recuerda que mañana el turno ${Number(todayTurno)+1} no tiene agua. 😞`);
+            await chat.sendMessage('Acuérdate de bañarte, y no solo porque mañana cortan el agua. 😉🚿');
         }
     },OPTIONS);
     
