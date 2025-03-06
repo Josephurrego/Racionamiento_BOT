@@ -1,5 +1,5 @@
 const http = require("http");
-const {client} = require('./wwebApp')
+const {initialize} = require('./attack')
 
 const host = '0.0.0.0';
 const port = 8000;
@@ -11,5 +11,5 @@ const server = http.createServer((req,res)=>{
 });
 server.listen(port, host, () => {
     console.log(`Server is running on http://${host}:${port}`);
-    client.initialize();
+    initialize();
 });
